@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RockPaperScissors</title>
+</head>
+<body>
+    <script>
+        //create array containing rock, paper, and scissors
+        console.log(computerPlay())
+
+        //create an input field for user to make move
+        let yourMove = window.prompt("make your move");
+
+        alert("you chose " + yourMove)
+
+        //create function comPuterPlay which returns "rock", "paper", or "scissors" randomly as output
+        function computerPlay (play) {
+            let move = ["rock", "paper", "scissors"];
+            let moved = move[Math.floor(Math.random() * move.length)];
+            return moved;
+        };
+        
+       
+
+        //create function which takes the two parameters and declares winner
+        function playRound (playerMove, computerMove) {
+        let playerSelection = yourMove;
+        let computerSelection = computerPlay();
+        console.log(computerPlay())
+              
+        if (playerSelection == "rock" && computerSelection == "scissors") {
+        return "You win! Rock beats scissors";
+
+        } else if (playerSelection == "paper" && computerSelection == "scissors") { 
+        return "You lose! Scissors beats paper!";
+
+        } else if (playerSelection == "scissors" && computerSelection == "rock") {
+        return "You lose! Rock beats scissors!";
+
+        } else if (playerSelection == "rock" && computerSelection =="rock") {
+        return "Its a draw!";
+
+        } else if (playerSelection == "paper" && computerSelection == "rock") {
+        return "You win! Paper beats rock!";
+
+        } else if (playerSelection == "scissors" && computerSelection == "scissors") {
+        return "Its a draw!";
+
+        } else if (playerSelection == "rock" && computerSelection == "paper") {
+        return "You lose! Paper beats rock!";
+
+        } else if (playerSelection == "paper" && computerSelection == "paper") {
+        return "Its a draw!";
+
+        } else if (playerSelection == "scissors" && computerSelection == "paper") {
+        return "You win! Scissors beats paper!";
+
+        } else return "Make your move!";
+        } ;
+ 
+    console.log(playRound());   
+    </script>
+</body>
+</html>
