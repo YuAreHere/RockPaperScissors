@@ -11,23 +11,34 @@
         //create array containing rock, paper, and scissors
         
         //create an input field for user to make move
-        let yourMove = window.prompt("make your move");
+        let yourMove = 0;
+        let chosenMove = 0;
 
-        let chosenMove = yourMove.toLowerCase();
+        function getPlayerMove () {
+            yourMove = window.prompt("make your move")
 
-        alert("you chose " + chosenMove)
+            chosenMove = yourMove.toLowerCase();
+
+            alert("you chose " + chosenMove)
+        };
+        
+        let playerSelection = 0;
+        let computerSelection = 0;
 
         //create function comPuterPlay which returns "rock", "paper", or "scissors" randomly as output
         function computerPlay (play) {
             const move = ["rock", "paper", "scissors"];
             const moved = move[Math.floor(Math.random() * move.length)];
+            alert("I choose " + moved)   
             return moved;
+
            };
 
-        const playerSelection = chosenMove;
-        const computerSelection = computerPlay();
+        
+        //let playerSelection = chosenMove;
+        //let computerSelection = computerPlay();
 
-           alert("I choose " + computerSelection)   
+           //alert("I choose " + computerSelection)   
 
         //create function which takes the two parameters and declares winner
         function playRound (score) {
@@ -72,19 +83,62 @@
     //console.log(computerPlay()) 
     //console.log(playRound());  
 
-    let roundScore = playRound();
-    alert(roundScore);   
+   // let roundScore = playRound();
+    //alert(roundScore);   
+
+    let roundScore = 0;
+
     
      
+    //Count a round score as a win, lose or draw
+   function roundScoreValue (digit) {
+       if (roundScore.includes("win")) {
+           return "win"
+       }   else if (roundScore.includes("lose")) {
+           return "lose"
+       }    else return "draw"
+    
+   } ;
+
+   //console.log(roundScoreValue());
+
+
     //Play five rounds
     //Store the score of each and report a winner and loser.
-    //Count the results that include "win" and if user wins are > 3, declare him the winner.
-    //Else declare user the loser.
+    //Count the results that include "win" 
+    //If win is greater than lose and draw combined, user has won.
+    //If lose is greater, user has lost
+    //If amount of win or lose is equal, user has drawn the game
+
+    let playerWins = 0;
+    let computerWins = 0;   
+    let draws = 0;
+
+
     function game(fiveRounds) {
+        
         for (let i = 0; i < 5; i++) {
    // your code here!
-}
+            getPlayerMove();
+            playerSelection = yourMove;
+            computerSelection = computerPlay();
+            roundScore = playRound();
+            alert(roundScore);
+            if (roundScoreValue() == "win") {
+            playerWins += 1;
+               
+            } else if (roundScoreValue() == "lose") {
+            computerWins += 1;
+             }  
+             else {
+                 draws += 1;
+             }
+            
+            }
+            alert ("Player Wins:" + playerWins + "() Computer Wins:" + computerWins)
     }
+
+    console.log(game());
     </script>
 </body>
 </html>
